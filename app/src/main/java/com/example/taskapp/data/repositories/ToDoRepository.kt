@@ -2,9 +2,11 @@ package com.example.taskapp.data.repositories
 
 import com.example.taskapp.data.data_source.ToDoDao
 import com.example.taskapp.data.models.ToDoTask
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+@ViewModelScoped
 class ToDoRepository @Inject constructor(private val toDoDao: ToDoDao) {
 
     val getAllTasks: Flow<List<ToDoTask>> = toDoDao.getAllTasks()
