@@ -27,11 +27,11 @@ fun TaskScreen(
         topBar = {
             TaskAppBar(
                 selectedTask = selectedTask,
-                navigateToListScreen = { action ->  
-                    if(action == Action.NO_ACTION) {
+                navigateToListScreen = { action ->
+                    if (action == Action.NO_ACTION) {
                         navigateToListScreen(action)
                     } else {
-                        if (sharedViewModel.validateFields()){
+                        if (sharedViewModel.validateFields()) {
                             navigateToListScreen(action)
                         } else {
                             displayToast(context = context)

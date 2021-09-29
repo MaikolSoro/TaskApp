@@ -67,20 +67,19 @@ fun TaskItem(
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
     Surface(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth(),
         color = MaterialTheme.colors.taskItemBackgroundColor,
         shape = RectangleShape,
         elevation = TASK_ITEM_ELEVATION,
         onClick = {
             navigateToTaskScreen(toDoTask.id)
         }
-
     ) {
         Column(
             modifier = Modifier
                 .padding(all = LARGE_PADDING)
                 .fillMaxWidth()
-
         ) {
             Row {
                 Text(
@@ -119,10 +118,11 @@ fun TaskItem(
     }
 }
 
+
 @ExperimentalMaterialApi
 @Composable
 @Preview
-fun TaskItemPreview() {
+private fun TaskItemPreview() {
     TaskItem(
         toDoTask = ToDoTask(
             id = 0,

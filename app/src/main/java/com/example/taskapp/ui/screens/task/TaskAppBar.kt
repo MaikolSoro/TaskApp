@@ -30,7 +30,6 @@ fun TaskAppBar(
             navigateToListScreen = navigateToListScreen
         )
     }
-
 }
 
 @Composable
@@ -51,7 +50,6 @@ fun NewTaskAppBar(
         actions = {
             AddAction(onAddClicked = navigateToListScreen)
         }
-
     )
 }
 
@@ -59,11 +57,7 @@ fun NewTaskAppBar(
 fun BackAction(
     onBackClicked: (Action) -> Unit
 ) {
-    IconButton(
-        onClick = {
-            onBackClicked(Action.NO_ACTION)
-        }
-    ) {
+    IconButton(onClick = { onBackClicked(Action.NO_ACTION) }) {
         Icon(
             imageVector = Icons.Filled.ArrowBack,
             contentDescription = stringResource(id = R.string.back_arrow),
@@ -76,11 +70,7 @@ fun BackAction(
 fun AddAction(
     onAddClicked: (Action) -> Unit
 ) {
-    IconButton(
-        onClick = {
-            onAddClicked(Action.NO_ACTION)
-        }
-    ) {
+    IconButton(onClick = { onAddClicked(Action.ADD) }) {
         Icon(
             imageVector = Icons.Filled.Check,
             contentDescription = stringResource(id = R.string.add_task),
@@ -111,7 +101,6 @@ fun ExistingTaskAppBar(
             DeleteAction(onDeleteClicked = navigateToListScreen)
             UpdateAction(onUpdateClicked = navigateToListScreen)
         }
-
     )
 }
 
@@ -119,11 +108,7 @@ fun ExistingTaskAppBar(
 fun CloseAction(
     onCloseClicked: (Action) -> Unit
 ) {
-    IconButton(
-        onClick = {
-            onCloseClicked(Action.NO_ACTION)
-        }
-    ) {
+    IconButton(onClick = { onCloseClicked(Action.NO_ACTION) }) {
         Icon(
             imageVector = Icons.Filled.Close,
             contentDescription = stringResource(id = R.string.close_icon),
@@ -136,11 +121,7 @@ fun CloseAction(
 fun DeleteAction(
     onDeleteClicked: (Action) -> Unit
 ) {
-    IconButton(
-        onClick = {
-            onDeleteClicked(Action.DELETE)
-        }
-    ) {
+    IconButton(onClick = { onDeleteClicked(Action.DELETE) }) {
         Icon(
             imageVector = Icons.Filled.Delete,
             contentDescription = stringResource(id = R.string.delete_icon),
@@ -153,11 +134,7 @@ fun DeleteAction(
 fun UpdateAction(
     onUpdateClicked: (Action) -> Unit
 ) {
-    IconButton(
-        onClick = {
-            onUpdateClicked(Action.UPDATE)
-        }
-    ) {
+    IconButton(onClick = { onUpdateClicked(Action.UPDATE) }) {
         Icon(
             imageVector = Icons.Filled.Check,
             contentDescription = stringResource(id = R.string.update_icon),
@@ -166,9 +143,10 @@ fun UpdateAction(
     }
 }
 
+
 @Composable
 @Preview
-fun NewTaskAppBarPreview() {
+private fun NewTaskAppBarPreview() {
     NewTaskAppBar(
         navigateToListScreen = {}
     )
@@ -176,11 +154,11 @@ fun NewTaskAppBarPreview() {
 
 @Composable
 @Preview
-fun ExistingTaskAppBarPreview() {
+private fun ExistingTaskAppBarPreview() {
     ExistingTaskAppBar(
         selectedTask = ToDoTask(
             id = 0,
-            title = "Maikol",
+            title = "Stevdza-San",
             description = "Some random text",
             priority = Priority.LOW
         ),

@@ -1,6 +1,5 @@
 package com.example.taskapp.ui.screens.list
 
-import android.util.Log
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -18,17 +17,21 @@ import com.example.taskapp.util.SearchAppBarState
 @ExperimentalMaterialApi
 @Composable
 fun ListScreen(
-    navigateToTaskScreen: (Int) -> Unit,
+    navigateToTaskScreen: (taskId: Int) -> Unit,
     sharedViewModel: SharedViewModel
 ) {
-    LaunchedEffect(key1 = true ) {
+    LaunchedEffect(key1 = true){
         sharedViewModel.getAllTasks()
     }
+
+    val action by sharedViewModel.action
 
     val allTasks by sharedViewModel.allTasks.collectAsState()
     val searchAppBarState: SearchAppBarState
             by sharedViewModel.searchAppBarState
     val searchTextState: String by sharedViewModel.searchTextState
+
+    sharedViewModel.handleDatabaseActions(action = action)
 
     Scaffold(
         topBar = {
@@ -39,16 +42,15 @@ fun ListScreen(
             )
         },
         content = {
-                ListContent(
-                    tasks = allTasks,
-                    navigateToTaskScreen = navigateToTaskScreen
-                )
+            ListContent(
+                tasks = allTasks,
+                navigateToTaskScreen = navigateToTaskScreen
+            )
         },
         floatingActionButton = {
             ListFab(onFabClicked = navigateToTaskScreen)
         }
     )
-
 }
 
 @Composable
@@ -63,7 +65,9 @@ fun ListFab(
     ) {
         Icon(
             imageVector = Icons.Filled.Add,
-            contentDescription = stringResource(id = R.string.add_button),
+            contentDescription = stringResource(
+                id = R.string.add_button
+            ),
             tint = Color.White
         )
     }

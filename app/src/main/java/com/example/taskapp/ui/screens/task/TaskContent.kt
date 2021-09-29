@@ -30,7 +30,6 @@ fun TaskContent(
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
             .padding(all = LARGE_PADDING)
-
     ) {
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -51,21 +50,23 @@ fun TaskContent(
         OutlinedTextField(
             modifier = Modifier.fillMaxSize(),
             value = description,
-            onValueChange = { onDescriptionChange (it)},
+            onValueChange = { onDescriptionChange(it) },
             label = { Text(text = stringResource(id = R.string.description)) },
             textStyle = MaterialTheme.typography.body1
         )
     }
 }
+
+
 @Composable
 @Preview
- private fun TaskContentPreview() {
-     TaskContent(
-         title = "",
-         onTitleChange = {},
-         description = "",
-         onDescriptionChange = {},
-         priority = Priority.LOW,
-         onPrioritySelected = {}
-     )
- }
+private fun TaskContentPreview() {
+    TaskContent(
+        title = "",
+        onTitleChange = {},
+        description = "",
+        onDescriptionChange = {},
+        priority = Priority.LOW,
+        onPrioritySelected = {}
+    )
+}
