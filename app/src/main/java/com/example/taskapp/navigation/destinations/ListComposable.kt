@@ -1,5 +1,6 @@
 package com.example.taskapp.navigation.destinations
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
@@ -9,6 +10,7 @@ import com.example.taskapp.ui.viewmodels.SharedViewModel
 import com.example.taskapp.util.Constants.LIST_ARGUMENT_KEY
 import com.example.taskapp.util.Constants.LIST_SCREEN
 
+@ExperimentalMaterialApi
 fun NavGraphBuilder.listComposable(
     navigateToTaskScreen: (Int) -> Unit,
     sharedViewModel: SharedViewModel
