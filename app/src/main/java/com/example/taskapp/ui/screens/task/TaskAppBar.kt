@@ -19,9 +19,18 @@ import com.example.taskapp.data.models.ToDoTask
 
 @Composable
 fun TaskAppBar(
+    selectedTask: ToDoTask?,
     navigateToListScreen: (Action) -> Unit
 ) {
-    NewTaskAppBar(navigateToListScreen = navigateToListScreen)
+    if (selectedTask == null) {
+        NewTaskAppBar(navigateToListScreen = navigateToListScreen)
+    } else {
+        ExistingTaskAppBar(
+            selectedTask = selectedTask,
+            navigateToListScreen = navigateToListScreen
+        )
+    }
+
 }
 
 @Composable
@@ -99,8 +108,8 @@ fun ExistingTaskAppBar(
         },
         backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor,
         actions = {
-                DeleteAction(onDeleteClicked = navigateToListScreen)
-                UpdateAction(onUpdateClicked = navigateToListScreen)
+            DeleteAction(onDeleteClicked = navigateToListScreen)
+            UpdateAction(onUpdateClicked = navigateToListScreen)
         }
 
     )
@@ -139,6 +148,7 @@ fun DeleteAction(
         )
     }
 }
+
 @Composable
 fun UpdateAction(
     onUpdateClicked: (Action) -> Unit
@@ -155,16 +165,18 @@ fun UpdateAction(
         )
     }
 }
+
 @Composable
 @Preview
-fun NewTaskAppBarPreview(){
+fun NewTaskAppBarPreview() {
     NewTaskAppBar(
         navigateToListScreen = {}
     )
 }
+
 @Composable
 @Preview
-fun ExistingTaskAppBarPreview(){
+fun ExistingTaskAppBarPreview() {
     ExistingTaskAppBar(
         selectedTask = ToDoTask(
             id = 0,
