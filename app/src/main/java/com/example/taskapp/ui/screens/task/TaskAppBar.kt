@@ -158,7 +158,7 @@ private fun ExistingTaskAppBarPreview() {
     ExistingTaskAppBar(
         selectedTask = ToDoTask(
             id = 0,
-            title = "Stevdza-San",
+            title = "Maikol",
             description = "Some random text",
             priority = Priority.LOW
         ),
