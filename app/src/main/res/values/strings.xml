@@ -1,5 +1,13 @@
 <resources>
+
     <string name="app_name">TaskApp</string>
+
+    <string name="delete_all_tasks">Remove All tasks?</string>
+    <string name="delete_all_tasks_confirmation">Are you sure you want to remove all tasks? There is not going back after this action.</string>
+    <string name="delete_task">Remove \'%1$s\'?</string>
+    <string name="delete_task_confirmation">Are you sure you want to remove \'%1$s\'?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="drop_down_arrow">Drop-Down Arrow Icon</string>
@@ -17,5 +25,6 @@
     <string name="sort_action">Sort Tasks</string>
     <string name="add_button">Add Button</string>
     <string name="delete_all_action">Delete All</string>
+    
 
 </resources>
