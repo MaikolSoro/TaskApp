@@ -1,8 +1,12 @@
 package com.example.taskapp.ui.screens.list
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.*
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -11,7 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
@@ -28,8 +32,11 @@ import com.example.taskapp.ui.theme.*
 import com.example.taskapp.util.Action
 import com.example.taskapp.util.RequestState
 import com.example.taskapp.util.SearchAppBarState
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
+@ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable
 fun ListContent(
@@ -82,6 +89,7 @@ fun ListContent(
 
 }
 
+@ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable
 fun HandleListContent(
@@ -100,6 +108,7 @@ fun HandleListContent(
     }
 }
 
+@ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable
 fun DisplayTasks(
@@ -117,7 +126,12 @@ fun DisplayTasks(
             val dismissState = rememberDismissState()
             val dismissDirection = dismissState.dismissDirection
             val isDismissed = dismissState.isDismissed(DismissDirection.EndToStart)
-            if(isDismissed && dismissDirection == DismissDirection.EndToStart){
+            if (isDismissed && dismissDirection == DismissDirection.EndToStart) {
+                val scope = rememberCoroutineScope()
+                scope.launch {
+                    delay(300)
+                    onSwipeToDelete(Action.DELETE, task)
+                }
                 onSwipeToDelete(Action.DELETE, task)
             }
 
@@ -126,19 +140,38 @@ fun DisplayTasks(
                     0f
                 else -45f
             )
-            SwipeToDismiss(
-                state = dismissState,
-                directions = setOf(DismissDirection.EndToStart),
-                dismissThresholds = { FractionalThreshold(fraction = 0.2f) },
-                background = { RedBackground(degrees = degrees) },
-                dismissContent = {
-                    TaskItem(
-                        toDoTask = task,
-                        navigateToTaskScreen = navigateToTaskScreen
+            var itemAppeared by remember { mutableStateOf(false) }
+            LaunchedEffect(key1 = true) {
+                itemAppeared = true
+            }
+            AnimatedVisibility(
+                visible = itemAppeared && !isDismissed,
+                enter = expandVertically(
+                    animationSpec = tween(
+                        durationMillis = 300
                     )
-                }
+                ),
+                exit = shrinkVertically(
+                    animationSpec = tween(
+                        durationMillis = 300
+                    )
+                )
 
-            )
+            ) {
+                SwipeToDismiss(
+                    state = dismissState,
+                    directions = setOf(DismissDirection.EndToStart),
+                    dismissThresholds = { FractionalThreshold(fraction = 0.2f) },
+                    background = { RedBackground(degrees = degrees) },
+                    dismissContent = {
+                        TaskItem(
+                            toDoTask = task,
+                            navigateToTaskScreen = navigateToTaskScreen
+                        )
+                    }
+
+                )
+            }
         }
     }
 }
@@ -233,4 +266,12 @@ private fun TaskItemPreview() {
         ),
         navigateToTaskScreen = {}
     )
+}
+
+@Composable
+@Preview
+private fun RedBackgroundPreview() {
+    Column(modifier = Modifier.height(100.dp)) {
+        RedBackground(degrees = 0f)
+    }
 }
