@@ -5,12 +5,12 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
 import com.example.taskapp.navigation.destinations.listComposable
 import com.example.taskapp.navigation.destinations.splashComposable
 import com.example.taskapp.navigation.destinations.taskComposable
 import com.example.taskapp.ui.viewmodels.SharedViewModel
 import com.example.taskapp.util.Constants.SPLASH_SCREEN
+import com.google.accompanist.navigation.animation.AnimatedNavHost
 
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
@@ -22,7 +22,7 @@ fun SetupNavigation(
     val screen = remember(navController) {
         Screens(navController = navController)
     }
-    NavHost(
+    AnimatedNavHost(
         navController = navController,
         startDestination = SPLASH_SCREEN
     ) {
