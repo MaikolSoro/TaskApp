@@ -3,6 +3,7 @@ package com.example.taskapp.navigation.destinations
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import com.google.accompanist.navigation.animation.composable
@@ -31,7 +32,9 @@ fun NavGraphBuilder.listComposable(
             sharedViewModel.action.value = action
         }
 
+        val databaseAction by sharedViewModel.action
         ListScreen(
+            action = databaseAction,
             navigateToTaskScreen = navigateToTaskScreen,
             sharedViewModel = sharedViewModel
         )
