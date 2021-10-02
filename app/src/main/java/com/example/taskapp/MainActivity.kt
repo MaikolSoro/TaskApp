@@ -13,6 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.taskapp.navigation.SetupNavigation
 import com.example.taskapp.ui.theme.TaskAppTheme
 import com.example.taskapp.ui.viewmodels.SharedViewModel
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,21 +28,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TaskAppTheme {
-                navController = rememberNavController()
+                navController = rememberAnimatedNavController()
                 SetupNavigation(
                     navController = navController,
                     sharedViewModel = sharedViewModel
                 )
             }
         }
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    TaskAppTheme {
-
     }
 }
