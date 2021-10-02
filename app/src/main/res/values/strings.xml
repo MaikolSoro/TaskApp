@@ -2,6 +2,7 @@
 
     <string name="app_name">TaskApp</string>
 
+    <string name="to_do_logo">To-Do Logo</string>
     <string name="delete_all_tasks">Remove All tasks?</string>
     <string name="delete_all_tasks_confirmation">Are you sure you want to remove all tasks? There is not going back after this action.</string>
     <string name="delete_task">Remove \'%1$s\'?</string>
