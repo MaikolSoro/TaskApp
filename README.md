@@ -1,6 +1,53 @@
 # TaskApp
 Build a To-Do App using Modern Declarative UI Toolkit called Jetpack Compose to Accelerate your UI and App development.
 
+# TaskApp ❤️
+🌞 Light Mode
+<table style="width:100%">
+  <tr>
+    <th>1. Splash Screen </th>
+    <th>2. List Screen empty </th> 
+    <th>3. Add Task  </th>
+    <th>4. List Screen with content </th> 
+    <th>5. Delete Task </th> 
+    <th>6. Edit Task  </th> 
+    <th>7. Search Task </th>
+  </tr>
+  <tr>
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136623871-11a6b7a8-ba3b-4464-b288-6047111164e4.png" /></td> 
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136623943-f60ef9cd-9fd3-4ac0-93d7-bc66e5985740.png" /></td>
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136624029-ecba4fb3-a3cb-4cb6-9b7c-97568a32c1ef.png" /></td> 
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136624208-ed74ed37-d8a0-4e92-a49c-bed684627f7a.png "/></td> 
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136624402-adf9e891-ae6f-43d8-9f71-fe3a1fd9558e.png" /></td> 
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136624554-bfbf17cd-d9b5-4105-85d7-b1ce71ccb946.png" /></td> 
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136624696-147b2190-baf3-45de-8e82-84e852bddf44.png" /></td> 
+   
+  </tr>
+</table>
+
+🌙 Dark Mode
+<table style="width:100%">
+  <tr>
+    <th>1. Splash Screen </th>
+    <th>2. List Screen empty </th> 
+    <th>3. Add Task  </th>
+    <th>4. List Screen with content </th> 
+    <th>5. Delete Task </th> 
+    <th>6. Edit Task  </th> 
+    <th>7. Priority </th>
+  </tr>
+  <tr>
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136625513-855eaa50-efe4-48d6-8f12-1480a1c6b9f2.png" /></td> 
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136625867-7bb0ced9-e10b-4104-92bc-819c14ea9b07.png" /></td>
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136625639-8e3313e6-b710-4826-a072-77a07003727b.png" /></td> 
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136625673-20a04559-5447-4daf-8733-ad01a29b157b.png"/></td> 
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136625708-c28a403d-c584-4b79-9a63-df56b95ba64e.png" /></td> 
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136625744-9199a07e-4816-4583-a35d-9cb44d99503d.png" /></td> 
+    <td><img src = "https://user-images.githubusercontent.com/46753453/136625773-62c5698e-a655-4719-b804-5f79cf9660ba.png" /></td> 
+   
+  </tr>
+</table>
+
 ## Built with 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
