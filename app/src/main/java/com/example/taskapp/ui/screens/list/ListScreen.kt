@@ -23,23 +23,20 @@ fun ListScreen(
     navigateToTaskScreen: (taskId: Int) -> Unit,
     sharedViewModel: SharedViewModel
 ) {
-    LaunchedEffect(key1 = true) {
+    LaunchedEffect(key1 = action) {
         sharedViewModel.handleDatabaseActions(action = action)
     }
 
     val allTasks by sharedViewModel.allTasks.collectAsState()
     val searchedTasks by sharedViewModel.searchedTasks.collectAsState()
     val sortState by sharedViewModel.sortState.collectAsState()
-
     val lowPriorityTasks by sharedViewModel.lowPriorityTasks.collectAsState()
     val highPriorityTasks by sharedViewModel.highPriorityTasks.collectAsState()
-
 
     val searchAppBarState: SearchAppBarState = sharedViewModel.searchAppBarState
     val searchTextState: String = sharedViewModel.searchTextState
 
     val scaffoldState = rememberScaffoldState()
-
 
     DisplaySnackBar(
         scaffoldState = scaffoldState,
@@ -108,7 +105,6 @@ fun DisplaySnackBar(
     taskTitle: String,
     action: Action
 ) {
-
     LaunchedEffect(key1 = action) {
         if (action != Action.NO_ACTION) {
             val snackBarResult = scaffoldState.snackbarHostState.showSnackbar(
@@ -136,7 +132,7 @@ private fun setActionLabel(action: Action): String {
     return if (action.name == "DELETE") {
         "UNDO"
     } else {
-        "ok"
+        "OK"
     }
 }
 

@@ -38,7 +38,9 @@ fun PriorityDropDown(
     val angle: Float by animateFloatAsState(
         targetValue = if (expanded) 180f else 0f
     )
+
     var parentSize by remember { mutableStateOf(IntSize.Zero) }
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -53,21 +55,20 @@ fun PriorityDropDown(
                 color = MaterialTheme.colors.onSurface.copy(
                     alpha = ContentAlpha.disabled
                 ),
-                shape = MaterialTheme.shapes.small,
+                shape = MaterialTheme.shapes.small
             ),
         verticalAlignment = Alignment.CenterVertically
-
     ) {
         Canvas(
             modifier = Modifier
                 .size(PRIORITY_INDICATOR_SIZE)
-                .weight(1f)
+                .weight(weight = 1f)
         ) {
             drawCircle(color = priority.color)
         }
         Text(
             modifier = Modifier
-                .weight(8f),
+                .weight(weight = 8f),
             text = priority.name,
             style = MaterialTheme.typography.subtitle2
         )
@@ -75,12 +76,14 @@ fun PriorityDropDown(
             modifier = Modifier
                 .alpha(ContentAlpha.medium)
                 .rotate(degrees = angle)
-                .weight(1.5f),
+                .weight(weight = 1.5f),
             onClick = { expanded = true }
         ) {
             Icon(
                 imageVector = Icons.Filled.ArrowDropDown,
-                contentDescription = stringResource(id = R.string.drop_down_arrow)
+                contentDescription = stringResource(
+                    id = R.string.drop_down_arrow
+                )
             )
         }
         DropdownMenu(
@@ -103,9 +106,10 @@ fun PriorityDropDown(
     }
 }
 
-@Preview
+
 @Composable
-fun PriorityDropDownPreview() {
+@Preview
+private fun PriorityDropDownPreview() {
     PriorityDropDown(
         priority = Priority.LOW,
         onPrioritySelected = {}
