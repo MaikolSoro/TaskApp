@@ -50,7 +50,6 @@ fun ListContent(
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
     if (sortState is RequestState.Success) {
-
         when {
             searchAppBarState == SearchAppBarState.TRIGGERED -> {
                 if (searchedTasks is RequestState.Success) {
@@ -86,7 +85,6 @@ fun ListContent(
             }
         }
     }
-
 }
 
 @ExperimentalAnimationApi
@@ -128,22 +126,26 @@ fun DisplayTasks(
             val isDismissed = dismissState.isDismissed(DismissDirection.EndToStart)
             if (isDismissed && dismissDirection == DismissDirection.EndToStart) {
                 val scope = rememberCoroutineScope()
-                scope.launch {
-                    delay(300)
-                    onSwipeToDelete(Action.DELETE, task)
+                SideEffect {
+                    scope.launch {
+                        delay(300)
+                        onSwipeToDelete(Action.DELETE, task)
+                    }
                 }
-                onSwipeToDelete(Action.DELETE, task)
             }
 
             val degrees by animateFloatAsState(
                 if (dismissState.targetValue == DismissValue.Default)
                     0f
-                else -45f
+                else
+                    -45f
             )
+
             var itemAppeared by remember { mutableStateOf(false) }
-            LaunchedEffect(key1 = true) {
+            LaunchedEffect(key1 = true){
                 itemAppeared = true
             }
+
             AnimatedVisibility(
                 visible = itemAppeared && !isDismissed,
                 enter = expandVertically(
@@ -156,7 +158,6 @@ fun DisplayTasks(
                         durationMillis = 300
                     )
                 )
-
             ) {
                 SwipeToDismiss(
                     state = dismissState,
@@ -169,7 +170,6 @@ fun DisplayTasks(
                             navigateToTaskScreen = navigateToTaskScreen
                         )
                     }
-
                 )
             }
         }
@@ -271,7 +271,7 @@ private fun TaskItemPreview() {
 @Composable
 @Preview
 private fun RedBackgroundPreview() {
-    Column(modifier = Modifier.height(100.dp)) {
+    Column(modifier = Modifier.height(80.dp)) {
         RedBackground(degrees = 0f)
     }
 }
