@@ -8,8 +8,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.google.accompanist.navigation.animation.composable
-import androidx.navigation.compose.navArgument
 import com.example.taskapp.ui.screens.task.TaskScreen
 import com.example.taskapp.ui.viewmodels.SharedViewModel
 import com.example.taskapp.util.Action
@@ -27,7 +27,7 @@ fun NavGraphBuilder.taskComposable(
         arguments = listOf(navArgument(TASK_ARGUMENT_KEY) {
             type = NavType.IntType
         }),
-        enterTransition = { _, _ ->
+        enterTransition = {
             slideInHorizontally(
                 initialOffsetX = { fullWidth -> -fullWidth },
                 animationSpec = tween(
@@ -40,8 +40,8 @@ fun NavGraphBuilder.taskComposable(
         LaunchedEffect(key1 = taskId) {
             sharedViewModel.getSelectedTask(taskId = taskId)
         }
-        val selectedTask by sharedViewModel.selectedTask.collectAsState()
 
+        val selectedTask by sharedViewModel.selectedTask.collectAsState()
         LaunchedEffect(key1 = selectedTask) {
             if (selectedTask != null || taskId == -1) {
                 sharedViewModel.updateTaskFields(selectedTask = selectedTask)

@@ -30,7 +30,6 @@ import com.example.taskapp.ui.theme.*
 import com.example.taskapp.ui.viewmodels.SharedViewModel
 import com.example.taskapp.util.Action
 import com.example.taskapp.util.SearchAppBarState
-import com.example.taskapp.util.TrailingIconState
 
 @Composable
 fun ListAppBar(
@@ -42,12 +41,13 @@ fun ListAppBar(
         SearchAppBarState.CLOSED -> {
             DefaultListAppBar(
                 onSearchClicked = {
-                    sharedViewModel.searchAppBarState.value =
-                        SearchAppBarState.OPENED
+                    sharedViewModel.updateAppBarState(
+                        newState = SearchAppBarState.OPENED
+                    )
                 },
-                onSortClicked = { sharedViewModel.persistSortState(it)},
+                onSortClicked = { sharedViewModel.persistSortState(it) },
                 onDeleteAllConfirmed = {
-                    sharedViewModel.action.value = Action.DELETE_ALL
+                    sharedViewModel.updateAction(newAction = Action.DELETE_ALL)
                 }
             )
         }
@@ -55,12 +55,13 @@ fun ListAppBar(
             SearchAppBar(
                 text = searchTextState,
                 onTextChange = { newText ->
-                    sharedViewModel.searchTextState.value = newText
+                    sharedViewModel.updateSearchText(newText = newText)
                 },
                 onCloseClicked = {
-                    sharedViewModel.searchAppBarState.value =
-                        SearchAppBarState.CLOSED
-                    sharedViewModel.searchTextState.value = ""
+                    sharedViewModel.updateAppBarState(
+                        newState = SearchAppBarState.CLOSED
+                    )
+                    sharedViewModel.updateSearchText(newText = "")
                 },
                 onSearchClicked = {
                     sharedViewModel.searchDatabase(searchQuery = it)
@@ -151,29 +152,15 @@ fun SortAction(
             expanded = expanded,
             onDismissRequest = { expanded = false }
         ) {
-            DropdownMenuItem(
-                onClick = {
-                    expanded = false
-                    onSortClicked(Priority.LOW)
+            Priority.values().slice(setOf(0, 2, 3)).forEach { priority ->
+                DropdownMenuItem(
+                    onClick = {
+                        expanded = false
+                        onSortClicked(priority)
+                    }
+                ) {
+                    PriorityItem(priority = priority)
                 }
-            ) {
-                PriorityItem(priority = Priority.LOW)
-            }
-            DropdownMenuItem(
-                onClick = {
-                    expanded = false
-                    onSortClicked(Priority.HIGH)
-                }
-            ) {
-                PriorityItem(priority = Priority.HIGH)
-            }
-            DropdownMenuItem(
-                onClick = {
-                    expanded = false
-                    onSortClicked(Priority.NONE)
-                }
-            ) {
-                PriorityItem(priority = Priority.NONE)
             }
         }
     }
@@ -221,10 +208,6 @@ fun SearchAppBar(
     onCloseClicked: () -> Unit,
     onSearchClicked: (String) -> Unit
 ) {
-    var trailingIconState by remember {
-        mutableStateOf(TrailingIconState.READY_TO_DELETE)
-    }
-
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -268,19 +251,10 @@ fun SearchAppBar(
             trailingIcon = {
                 IconButton(
                     onClick = {
-                        when (trailingIconState) {
-                            TrailingIconState.READY_TO_DELETE -> {
-                                onTextChange("")
-                                trailingIconState = TrailingIconState.READY_TO_CLOSE
-                            }
-                            TrailingIconState.READY_TO_CLOSE -> {
-                                if (text.isNotEmpty()) {
-                                    onTextChange("")
-                                } else {
-                                    onCloseClicked()
-                                    trailingIconState = TrailingIconState.READY_TO_DELETE
-                                }
-                            }
+                        if (text.isNotEmpty()) {
+                            onTextChange("")
+                        } else {
+                            onCloseClicked()
                         }
                     }
                 ) {
@@ -309,7 +283,6 @@ fun SearchAppBar(
         )
     }
 }
-
 @Composable
 @Preview
 private fun DefaultListAppBarPreview() {

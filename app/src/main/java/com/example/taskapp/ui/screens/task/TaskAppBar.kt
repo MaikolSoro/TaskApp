@@ -129,9 +129,8 @@ fun ExistingTaskAppBarActions(
     selectedTask: ToDoTask,
     navigateToListScreen: (Action) -> Unit
 ) {
-    var openDialog by remember {
-        mutableStateOf(false)
-    }
+    var openDialog by remember { mutableStateOf(false) }
+
     DisplayAlertDialog(
         title = stringResource(
             id = R.string.delete_task,
