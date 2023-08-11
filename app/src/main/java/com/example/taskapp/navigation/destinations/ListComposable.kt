@@ -9,6 +9,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
+import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.taskapp.ui.screens.list.ListScreen
 import com.example.taskapp.ui.viewmodels.SharedViewModel
@@ -16,7 +17,6 @@ import com.example.taskapp.util.Action
 import com.example.taskapp.util.Constants.LIST_ARGUMENT_KEY
 import com.example.taskapp.util.Constants.LIST_SCREEN
 import com.example.taskapp.util.toAction
-import com.google.accompanist.navigation.animation.composable
 
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi

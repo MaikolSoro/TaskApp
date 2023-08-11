@@ -8,10 +8,10 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.taskapp.navigation.SetupNavigation
 import com.example.taskapp.ui.theme.TaskAppTheme
 import com.example.taskapp.ui.viewmodels.SharedViewModel
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         setContent {
             TaskAppTheme {
-                navController = rememberAnimatedNavController()
+                navController = rememberNavController()
                 SetupNavigation(
                     navController = navController,
                     sharedViewModel = sharedViewModel
