@@ -1,5 +1,38 @@
-# TaskApp
+<div align="center">
+  <h1 align = "center">
+  <b><i>TaskApp</i></b>
+  </h1>
+
+  
+  [Deployment](#arrow_lower_right-deployment-arrow_lower_right) ~
+  [Architecture](#hammer_and_wrench-architecture-hammer_and_wrench) ~
+  [Tech Stack](#building_construction-tech-stack-building_construction) ~
+  [Authors](#memo-authors-memo) ~
+  [Contributing](#handshake-contributing-handshake)  
+  [License](#scroll-license-scroll)  
+</div>  
 Build a To-Do App using Modern Declarative UI Toolkit called Jetpack Compose to Accelerate your UI and App development.
+
+# :arrow_lower_right: Deployment :arrow_lower_right:
+These are the key parameters for TaskApp.
+
+| Parameters     | Value |
+|----------------|-------|
+| compileSdk     | 34    |
+| targetSdk      | 33    |
+| minSdk         | 24    |
+| composeVersion | 1.4.0 |
+| kotlinVersion  | 1.8.10 |
+
+You can clone the repository or download the Zip file [here](https://github.com/MaikolSoro/TaskApp)
+
+To build and run the app, you will need the latest version of Android Studio Flamingo (or [newer](https://developer.android.com/studio/)) installed on your system.
+# :hammer_and_wrench: Architecture :hammer_and_wrench:
+
+TaskApp is initially built using Android Clean Architecture that follows the more familiar   **Model-View-ViewModel** (MVVM) pattern .
+## Architecture
+[***MVVM (Model View View-Model)***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
+![ANDROID ROOM DB DIAGRAM](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
 
 # TaskApp ❤️
 🌞 Light Mode
@@ -48,25 +81,29 @@ Build a To-Do App using Modern Declarative UI Toolkit called Jetpack Compose to 
   </tr>
 </table>
 
-## Built with 🛠
-- [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
-- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
-- [Navigation compose](https://developer.android.com/jetpack/compose/navigation) - Navigation refers to the interactions that allow users to navigate across, into, and back out from the different pieces of content within your app.
-- [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
-  - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - Data objects that notify views when the underlying database changes.
-  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes. 
- - [Room](https://developer.android.com/topic/libraries/architecture/room) - SQLite object mapping library.
-- [DataStore](https://developer.android.com/topic/libraries/architecture/datastore) - Jetpack DataStore is a data storage solution that allows you to store key-value pairs or typed objects with protocol buffers.
-- [Dependency Injection](https://developer.android.com/training/dependency-injection) - 
-  - [Hilt-Dagger](https://dagger.dev/hilt/) - Standard library to incorporate Dagger dependency injection into an Android application.
-  - [Hilt-ViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack) - DI for injecting `ViewModel`.
- - [Jetpack Compose UI Toolkit](https://developer.android.com/jetpack/compose) - Modern UI development toolkit.
- 
-## Architecture
-This app uses [***MVVM (Model View View-Model)***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
-![ANDROID ROOM DB DIAGRAM](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
+# :building_construction: Tech Stack :building_construction:
 
-### Contributing 🔥⚡
+The TaskApp project uses many popular libraries and tools in the Android Ecosystem:
+
+* [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
+* [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
+* [Navigation compose](https://developer.android.com/jetpack/compose/navigation) - Navigation refers to the interactions that allow users to navigate across, into, and back out from the different pieces of content within your app.
+* [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
+* [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - Data objects that notify views when the underlying database changes.
+* [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes. 
+* [Room](https://developer.android.com/topic/libraries/architecture/room) - SQLite object mapping library.
+* [DataStore](https://developer.android.com/topic/libraries/architecture/datastore) - Jetpack DataStore is a data storage solution that allows you to store key-value pairs or typed objects with protocol buffers.
+* [Dependency Injection](https://developer.android.com/training/dependency-injection) - 
+* [Hilt-Dagger](https://dagger.dev/hilt/) - Standard library to incorporate Dagger dependency injection into an Android application.
+*  [Hilt-ViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack) - DI for injecting `ViewModel`.
+* [Jetpack Compose UI Toolkit](https://developer.android.com/jetpack/compose) - Modern UI development toolkit.
+
+# :memo: Authors :memo:
+- [@MaikolSoro](https://github.com/MaikolSoro)
+ 
+
+# :handshake: Contributing :handshake🔥⚡: 
+
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
@@ -74,7 +111,7 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 5. Submit a pull request and enjoy! :D
 
 
-### 🔖 License
+# :scroll: License :scroll:
 ```
 MIT License
 
